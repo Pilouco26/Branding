@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" role="img" aria-label="Cimal">
+  <defs>
+    <linearGradient id="ci-left" x1="6" y1="30" x2="18" y2="6" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#12302A"/>
+      <stop offset="100%" stop-color="#74BC9F"/>
+    </linearGradient>
+    <linearGradient id="ci-right" x1="18" y1="6" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3E8E74"/>
+      <stop offset="100%" stop-color="#0F2B24"/>
+    </linearGradient>
+    <linearGradient id="ci-cap" x1="14" y1="6" x2="22" y2="14" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EDF4F1"/>
+      <stop offset="100%" stop-color="#8FCBB2"/>
+    </linearGradient>
+    <linearGradient id="ci-text" x1="38" y1="10" x2="140" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3E8E74"/>
+      <stop offset="100%" stop-color="#12302A"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#ci-left)" d="M6 30 L18 6 L18 30 Z"/>
+  <path fill="url(#ci-right)" d="M18 6 L30 30 L18 30 Z"/>
+  <path fill="url(#ci-cap)" d="M18 6 L22 14 H14 Z"/>
+  <text x="38.6" y="28.6" font-family="Sora, Outfit, system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="-0.03em" fill="#12302A" opacity="0.15">Cimal</text>
+  <text x="38" y="28" font-family="Sora, Outfit, system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="-0.03em" fill="url(#ci-text)">Cimal</text>
+</svg>

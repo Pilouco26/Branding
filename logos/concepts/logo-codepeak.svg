@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Codepeak mark">
+  <defs>
+    <linearGradient id="cp-peak" x1="13" y1="7" x2="19" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D3EEE2"/>
+      <stop offset="55%" stop-color="#3E8E74"/>
+      <stop offset="100%" stop-color="#12302A"/>
+    </linearGradient>
+    <linearGradient id="cp-bracket" x1="4" y1="8" x2="28" y2="24" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8FCBB2"/>
+      <stop offset="100%" stop-color="#12302A"/>
+    </linearGradient>
+  </defs>
+  <!-- Extruded brackets (back layer for depth) -->
+  <path fill="none" stroke="#12302A" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" opacity="0.25"
+    d="M11 7.5 L5 15.5 L11 23.5"/>
+  <path fill="none" stroke="#12302A" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" opacity="0.25"
+    d="M21 7.5 L27 15.5 L21 23.5"/>
+  <!-- Front brackets -->
+  <path fill="none" stroke="url(#cp-bracket)" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"
+    d="M10 8 L4 16 L10 24"/>
+  <path fill="none" stroke="url(#cp-bracket)" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"
+    d="M22 8 L28 16 L22 24"/>
+  <!-- 3D peak between brackets -->
+  <path fill="url(#cp-peak)" d="M16 6.5 L20 15.5 H12 Z"/>
+  <path fill="#EDF4F1" opacity="0.5" d="M16 8 L17.8 12.5 H14.2 Z"/>
+</svg>

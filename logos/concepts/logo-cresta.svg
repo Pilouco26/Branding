@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" role="img" aria-label="Cresta">
+  <defs>
+    <linearGradient id="cr-lit" x1="10" y1="8" x2="28" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A9DBC6"/>
+      <stop offset="100%" stop-color="#3E8E74"/>
+    </linearGradient>
+    <linearGradient id="cr-mid" x1="4" y1="10" x2="18" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4E9F83"/>
+      <stop offset="100%" stop-color="#12302A"/>
+    </linearGradient>
+    <linearGradient id="cr-shade" x1="18" y1="8" x2="32" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2B7A62"/>
+      <stop offset="100%" stop-color="#0F2B24"/>
+    </linearGradient>
+    <linearGradient id="cr-text" x1="40" y1="10" x2="140" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3E8E74"/>
+      <stop offset="100%" stop-color="#12302A"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#cr-mid)" d="M4 30 L12 10 L18 22 L18 30 Z"/>
+  <path fill="url(#cr-shade)" d="M18 22 L24 8 L32 30 L18 30 Z"/>
+  <path fill="url(#cr-lit)" d="M12 10 L18 22 L24 8 Z"/>
+  <path fill="#EDF4F1" opacity="0.8" d="M18 12 L19.8 16.5 H16.2 Z"/>
+  <text x="40.6" y="28.6" font-family="Sora, Outfit, system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="-0.03em" fill="#12302A" opacity="0.15">Cresta</text>
+  <text x="40" y="28" font-family="Sora, Outfit, system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="-0.03em" fill="url(#cr-text)">Cresta</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-labelledby="rpd-title">
+  <title id="rpd-title">Piricodi</title>
+  <defs>
+    <linearGradient id="rpd-lit" x1="16" y1="7" x2="16" y2="19" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D3EEE2"/>
+      <stop offset="1" stop-color="#74BC9F"/>
+    </linearGradient>
+    <linearGradient id="rpd-mid" x1="9" y1="9" x2="12" y2="27" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#74BC9F"/>
+      <stop offset="1" stop-color="#2B7A62"/>
+    </linearGradient>
+    <linearGradient id="rpd-shade" x1="21" y1="7" x2="24" y2="27" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3E8E74"/>
+      <stop offset="1" stop-color="#1F5747"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#rpd-mid)" d="M3 27 L11 9 L16 19 V27 Z"/>
+  <path fill="url(#rpd-shade)" d="M16 19 L21 7 L29 27 H16 Z"/>
+  <path fill="url(#rpd-lit)" d="M11 9 L21 7 L16 19 Z"/>
+  <path fill="#F4FAF7" opacity="0.9" d="M16 10.5 L18.2 15 H13.8 Z"/>
+</svg>

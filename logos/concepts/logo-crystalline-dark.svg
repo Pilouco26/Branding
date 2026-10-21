@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Crystalline ridge mark">
+  <defs>
+    <linearGradient id="crd-top" x1="16" y1="3" x2="16" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EDF4F1"/>
+      <stop offset="100%" stop-color="#8FCBB2"/>
+    </linearGradient>
+    <linearGradient id="crd-right" x1="16" y1="3" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#74BC9F"/>
+      <stop offset="100%" stop-color="#12302A"/>
+    </linearGradient>
+    <linearGradient id="crd-left" x1="4" y1="26" x2="16" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1D5646"/>
+      <stop offset="100%" stop-color="#8FCBB2"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#crd-left)" d="M4 26 L16 3 L16 26 Z"/>
+  <path fill="url(#crd-right)" d="M16 3 L28 26 L16 26 Z"/>
+  <path fill="url(#crd-top)" d="M10 16 L16 3 L22 16 Z"/>
+  <path fill="none" stroke="#EDF4F1" stroke-width="0.7" stroke-linecap="round" opacity="0.65" d="M16 3 L16 26"/>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PC monogram">
+  <defs>
+    <linearGradient id="pc-c" x1="12" y1="6" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A9DBC6"/>
+      <stop offset="100%" stop-color="#2B7A62"/>
+    </linearGradient>
+    <linearGradient id="pc-p" x1="7" y1="6" x2="20" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8FCBB2"/>
+      <stop offset="100%" stop-color="#12302A"/>
+    </linearGradient>
+  </defs>
+  <!-- C ring with depth -->
+  <path fill="none" stroke="#12302A" stroke-width="3.2" stroke-linecap="square" opacity="0.2"
+    d="M20.5 8.5 A8 8 0 1 1 20.5 24.5"/>
+  <path fill="none" stroke="url(#pc-c)" stroke-width="2.5" stroke-linecap="square"
+    d="M20 8 A8 8 0 1 1 20 24"/>
+  <!-- P volume -->
+  <path fill="url(#pc-p)" fill-rule="evenodd" d="
+    M7 6 h9
+    a6.5 6.5 0 0 1 0 13
+    H12 v7 H7 Z
+    M12 11 h4
+    a2 2 0 0 1 0 4
+    h-4 Z
+  "/>
+  <path fill="#EDF4F1" opacity="0.35" d="M8.2 7.2 h6 a5 5 0 0 1 0 3.2 h-6 Z"/>
+</svg>

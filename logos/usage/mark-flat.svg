@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="298 117 428 218" role="img" aria-labelledby="flat-title">
+  <title id="flat-title">Piricodi</title>
+  <defs><clipPath id="flat-clip"><path d="M308 325L417 187L447 204L511.5 127L571 195L599 176L716 325Z"/></clipPath></defs>
+<path fill="#0E8251" d="M308 325L417 187L447 204L511.5 127L571 195L599 176L716 325Z"/>
+<path fill="#046F45" clip-path="url(#flat-clip)" d="M452 325L502 325L572 232L522 208L486 262Z"/>
+<path fill="#01613C" clip-path="url(#flat-clip)" d="M511.5 127L571 195L599 176L716 325L502 325L572 232L546 172Z"/>
+<g clip-path="url(#flat-clip)" fill="none" stroke="#FFFFFF" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"><path d="M380 249L418 198 M380 249L411 218 M418 198L411 218 M418 198L417 187 M418 198L422 265 M411 218L450 215 M411 218L422 265 M450 215L422 265 M512 140L511.5 127 M512 140L494 170 M512 140L521 203 M512 140L547 190 M512 140L418 198 M494 170L450 215 M521 203L499 253 M521 203L547 190 M547 190L499 253 M547 190L569 206 M450 215L512 140 M422 265L547 190 M598 188L599 176 M598 188L569 206 M598 188L618 225 M569 206L618 225 M569 206L606 264 M560 236L618 225 M560 236L606 264 M560 236L547 190 M618 225L642 246 M642 246L598 188"/></g>
+<g clip-path="url(#flat-clip)"><circle cx="380" cy="249" r="4.8" fill="#FFFFFF"/>
+<circle cx="418" cy="198" r="4.8" fill="#FFFFFF"/>
+<circle cx="411" cy="218" r="4.8" fill="#FFFFFF"/>
+<circle cx="450" cy="215" r="4.8" fill="#FFFFFF"/>
+<circle cx="422" cy="265" r="4.8" fill="#FFFFFF"/>
+<circle cx="512" cy="140" r="4.8" fill="#FFFFFF"/>
+<circle cx="547" cy="190" r="4.8" fill="#FFFFFF"/>
+<circle cx="499" cy="253" r="4.8" fill="#FFFFFF"/>
+<circle cx="494" cy="170" r="4.8" fill="#FFFFFF"/>
+<circle cx="521" cy="203" r="4.8" fill="#FFFFFF"/>
+<circle cx="598" cy="188" r="4.8" fill="#FFFFFF"/>
+<circle cx="569" cy="206" r="4.8" fill="#FFFFFF"/>
+<circle cx="560" cy="236" r="4.8" fill="#FFFFFF"/>
+<circle cx="618" cy="225" r="4.8" fill="#FFFFFF"/>
+<circle cx="606" cy="264" r="4.8" fill="#FFFFFF"/>
+<circle cx="642" cy="246" r="4.8" fill="#FFFFFF"/></g>
+</svg>

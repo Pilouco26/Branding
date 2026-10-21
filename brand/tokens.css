@@ -1,0 +1,58 @@
+/* Piricodi · Estany */
+
+:root {
+  --color-ink: #12302A;
+  --color-emerald: #2B7A62;
+  --color-emerald-deep: #1D5646;
+  --color-mint: #8FCBB2;
+  --color-mist: #EDF4F1;
+  --color-snow: #FAFCFB;
+  --color-slate: #5B6B66;
+  --color-line: #D5E2DC;
+  --color-night: #0E1F1B;
+  --color-dusk: #8FA39C;
+  --color-night-line: #23362F;
+
+  --surface: var(--color-snow);
+  --surface-raised: #FFFFFF;
+  --panel: var(--color-mist);
+  --text: var(--color-ink);
+  --text-muted: var(--color-slate);
+  --border: var(--color-line);
+  --accent: var(--color-emerald);
+  --accent-hover: var(--color-emerald-deep);
+  --on-accent: #FFFFFF;
+  --link: var(--color-emerald);
+  --gradient-accent: linear-gradient(180deg, var(--color-emerald), var(--color-emerald-deep));
+
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --space: 8px;
+  --radius-control: 4px;
+  --radius-card: 8px;
+  --chamfer: 20px;
+  --clip-chamfer: polygon(0 0, calc(100% - var(--chamfer)) 0, 100% var(--chamfer), 100% 100%, 0 100%);
+
+  --highlight-top: inset 0 1px 0 rgb(255 255 255 / 0.16);
+  --shadow-control: 0 1px 2px color-mix(in srgb, var(--color-ink) 22%, transparent);
+  --shadow-raised:
+    0 1px 1px color-mix(in srgb, var(--color-ink) 10%, transparent),
+    0 14px 28px color-mix(in srgb, var(--color-ink) 10%, transparent);
+}
+
+/* Minimum contrast here: text 13.7:1, text-muted 5.8:1, on-accent 7.7:1. Re-check before changing. */
+[data-theme="dark"] {
+  --surface: var(--color-night);
+  --surface-raised: #142923;
+  --panel: #132822;
+  --text: var(--color-mist);
+  --text-muted: var(--color-dusk);
+  --border: var(--color-night-line);
+  --accent: var(--color-mint);
+  --accent-hover: #A9DBC6;
+  --on-accent: var(--color-ink);
+  --link: var(--color-mint);
+  --gradient-accent: linear-gradient(180deg, #A9DBC6, var(--color-mint));
+}

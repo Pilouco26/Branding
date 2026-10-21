@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" role="img" aria-label="Piri">
+  <defs>
+    <linearGradient id="pw-text" x1="0" y1="8" x2="70" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3E8E74"/>
+      <stop offset="100%" stop-color="#12302A"/>
+    </linearGradient>
+    <radialGradient id="pw-dot" cx="72" cy="10" r="4" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D3EEE2"/>
+      <stop offset="70%" stop-color="#3E8E74"/>
+      <stop offset="100%" stop-color="#12302A"/>
+    </radialGradient>
+  </defs>
+  <text x="0.7" y="28.7" font-family="Sora, Outfit, system-ui, sans-serif" font-size="28" font-weight="600" letter-spacing="-0.04em" fill="#12302A" opacity="0.16">Piri</text>
+  <text x="0" y="28" font-family="Sora, Outfit, system-ui, sans-serif" font-size="28" font-weight="600" letter-spacing="-0.04em" fill="url(#pw-text)">Piri</text>
+  <circle cx="72.6" cy="10.6" r="3.2" fill="#12302A" opacity="0.2"/>
+  <circle cx="72" cy="10" r="3" fill="url(#pw-dot)"/>
+</svg>

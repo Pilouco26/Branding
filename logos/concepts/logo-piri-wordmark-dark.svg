@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" role="img" aria-label="Piri">
+  <defs>
+    <linearGradient id="pwd-text" x1="0" y1="8" x2="70" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D3EEE2"/>
+      <stop offset="100%" stop-color="#8FCBB2"/>
+    </linearGradient>
+    <radialGradient id="pwd-dot" cx="72" cy="10" r="4" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EDF4F1"/>
+      <stop offset="70%" stop-color="#8FCBB2"/>
+      <stop offset="100%" stop-color="#1D5646"/>
+    </radialGradient>
+  </defs>
+  <text x="0" y="28" font-family="Sora, Outfit, system-ui, sans-serif" font-size="28" font-weight="600" letter-spacing="-0.04em" fill="url(#pwd-text)">Piri</text>
+  <circle cx="72" cy="10" r="3" fill="url(#pwd-dot)"/>
+</svg>

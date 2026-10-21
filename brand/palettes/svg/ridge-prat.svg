@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-labelledby="pr-title">
+  <title id="pr-title">Piricodi</title>
+  <defs>
+    <linearGradient id="pr-lit" x1="16" y1="7" x2="16" y2="19" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C8E2D2"/>
+      <stop offset="1" stop-color="#6FAA8F"/>
+    </linearGradient>
+    <linearGradient id="pr-mid" x1="9" y1="9" x2="12" y2="27" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4F9479"/>
+      <stop offset="1" stop-color="#2A5E4C"/>
+    </linearGradient>
+    <linearGradient id="pr-shade" x1="21" y1="7" x2="24" y2="27" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2A5E4C"/>
+      <stop offset="1" stop-color="#17352B"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#pr-mid)" d="M3 27 L11 9 L16 19 V27 Z"/>
+  <path fill="url(#pr-shade)" d="M16 19 L21 7 L29 27 H16 Z"/>
+  <path fill="url(#pr-lit)" d="M11 9 L21 7 L16 19 Z"/>
+  <path fill="#EED9A8" d="M16 10.5 L18.2 15 H13.8 Z"/>
+</svg>

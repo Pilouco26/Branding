@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Factura · Piricodi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="../brand/tokens.css">
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { margin: 0; background: #E6EBE9; font-family: var(--font-body); color: var(--text); font-size: 9.5pt; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+    .toolbar { display: flex; justify-content: flex-end; width: 210mm; margin: 16px auto 0; }
+    .toolbar button { font: 500 13px var(--font-body); color: var(--on-accent); background: var(--gradient-accent); border: 0; border-radius: var(--radius-control); padding: 10px 16px; box-shadow: var(--highlight-top), var(--shadow-control); cursor: pointer; }
+    .toolbar button:hover { background: var(--accent-hover); }
+
+    .sheet { width: 210mm; min-height: 297mm; margin: 16px auto 48px; padding: 18mm 18mm 14mm; background: #FFFFFF; box-shadow: var(--shadow-raised); display: flex; flex-direction: column; }
+
+    .head { display: flex; justify-content: space-between; align-items: flex-start; }
+    .lockup { display: flex; align-items: center; gap: 3mm; font-family: var(--font-display); font-weight: 600; font-size: 20pt; letter-spacing: -0.04em; color: var(--color-ink); }
+    .lockup img { height: 11mm; width: auto; }
+    .label { font-family: var(--font-mono); font-weight: 500; font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 1.2mm; }
+    .doc { text-align: right; font-variant-numeric: tabular-nums; }
+    .doc-number { font-family: var(--font-display); font-weight: 600; font-size: 16pt; letter-spacing: -0.02em; line-height: 1.2; margin: 0; }
+    .doc-date { margin: 0; color: var(--text-muted); }
+
+    .ridge-rule { display: flex; align-items: flex-end; margin: 7mm 0 8mm; }
+    .ridge-rule::before, .ridge-rule::after { content: ""; border-bottom: 1px solid var(--border); }
+    .ridge-rule::before { flex: 0 0 10mm; }
+    .ridge-rule::after { flex: 1; }
+    .ridge-rule svg { width: 9.5mm; height: 3.2mm; fill: none; stroke: var(--accent); stroke-width: 1; overflow: visible; }
+
+    .parties { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+    .parties p { margin: 0; }
+    .parties strong { font-weight: 600; }
+
+    .terms { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 6mm; margin: 9mm 0 9mm; padding: 3.5mm 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+    .terms p { margin: 0; }
+
+    table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+    th { text-align: left; font-family: var(--font-mono); font-weight: 500; font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); padding: 0 0 2.5mm; border-bottom: 1px solid var(--color-ink); }
+    td { padding: 3mm 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th:not(:first-child), td:not(:first-child) { text-align: right; padding-left: 6mm; white-space: nowrap; }
+
+    .totals { margin: 6mm 0 0 auto; width: 78mm; display: grid; grid-template-columns: 1fr auto; row-gap: 2mm; font-variant-numeric: tabular-nums; }
+    .totals dt { color: var(--text-muted); }
+    .totals dd { margin: 0; padding-left: 6mm; text-align: right; }
+    .totals .grand { font-family: var(--font-display); font-weight: 600; font-size: 14pt; letter-spacing: -0.02em; color: var(--color-ink); padding-top: 3mm; margin-top: 1mm; border-top: 1px solid var(--color-ink); }
+
+    .end { margin-top: auto; padding-top: 12mm; }
+    .notes { margin: 0 0 6mm; max-width: 120mm; color: var(--text-muted); }
+    .foot { display: flex; justify-content: space-between; padding-top: 3.5mm; border-top: 1px solid var(--border); font-size: 8pt; color: var(--text-muted); }
+
+    @media print {
+      body { background: #FFFFFF; }
+      .toolbar { display: none; }
+      .sheet { margin: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar"><button type="button" onclick="window.print()">Imprimir o desar PDF</button></div>
+  <main class="sheet" id="factura"></main>
+
+  <script>
+    const FACTURA = {
+      numero: "2026-0142",
+      data: "2026-10-19",
+      venciment: "2026-11-18",
+      igi: 0.045,
+      emissor: {
+        nom: "Piricodi SL",
+        nrt: "L-000000-X",
+        adreca: ["Carrer de l'Exemple, 1", "AD500 Andorra la Vella"],
+        correu: "hola@piricodi.ad",
+        web: "piricodi.ad"
+      },
+      client: {
+        nom: "Empresa Local SA",
+        nrt: "A-000000-X",
+        adreca: ["Avinguda de l'Exemple, 10", "AD700 Escaldes-Engordany"]
+      },
+      pagament: { metode: "Transferència bancària", iban: "AD00 0000 0000 0000 0000 0000" },
+      linies: [
+        { concepte: "Arquitectura i disseny tècnic", quantitat: 24, unitat: "h", preu: 70 },
+        { concepte: "Desenvolupament backend", quantitat: 62, unitat: "h", preu: 70 },
+        { concepte: "Manteniment i suport (octubre)", quantitat: 10, unitat: "h", preu: 70 }
+      ],
+      notes: "Pagament per transferència en un termini de 30 dies. Indiqueu el número de factura al concepte."
+    };
+
+    const LOCALE = "ca-AD";
+    const money = new Intl.NumberFormat(LOCALE, { style: "currency", currency: "EUR" });
+    const number = new Intl.NumberFormat(LOCALE, { maximumFractionDigits: 2 });
+    const percent = new Intl.NumberFormat(LOCALE, { style: "percent", maximumFractionDigits: 2 });
+    const date = new Intl.DateTimeFormat(LOCALE, { day: "2-digit", month: "2-digit", year: "numeric" });
+
+    const escape = value => String(value).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+    const toCents = euros => Math.round(euros * 100);
+    const fromCents = cents => money.format(cents / 100);
+    const formatDate = iso => date.format(new Date(`${iso}T00:00:00`));
+
+    function render(f) {
+      const lines = f.linies.map(l => ({ ...l, cents: toCents(l.quantitat * l.preu) }));
+      const base = lines.reduce((sum, l) => sum + l.cents, 0);
+      const igi = Math.round(base * f.igi);
+      const party = (label, p) => `
+        <div>
+          <p class="label">${label}</p>
+          <p><strong>${escape(p.nom)}</strong><br>NRT ${escape(p.nrt)}<br>${p.adreca.map(escape).join("<br>")}</p>
+        </div>`;
+
+      return `
+        <header class="head">
+          <div class="lockup"><img src="../logos/usage/mark-flat.svg" alt="">Piricodi</div>
+          <div class="doc">
+            <p class="label">Factura</p>
+            <p class="doc-number">${escape(f.numero)}</p>
+            <p class="doc-date">${formatDate(f.data)}</p>
+          </div>
+        </header>
+
+        <div class="ridge-rule" aria-hidden="true">
+          <svg viewBox="0 0 36 12"><path d="M0 11.5 L10 3 L17 8 L25 1 L36 11.5"/></svg>
+        </div>
+
+        <section class="parties">
+          ${party("Emissor", f.emissor)}
+          ${party("Client", f.client)}
+        </section>
+
+        <section class="terms">
+          <div><p class="label">Venciment</p><p>${formatDate(f.venciment)}</p></div>
+          <div><p class="label">Forma de pagament</p><p>${escape(f.pagament.metode)}</p></div>
+          <div><p class="label">IBAN</p><p>${escape(f.pagament.iban)}</p></div>
+        </section>
+
+        <table>
+          <thead><tr><th>Concepte</th><th>Quantitat</th><th>Preu unitari</th><th>Import</th></tr></thead>
+          <tbody>
+            ${lines.map(l => `
+              <tr>
+                <td>${escape(l.concepte)}</td>
+                <td>${number.format(l.quantitat)} ${escape(l.unitat)}</td>
+                <td>${money.format(l.preu)}</td>
+                <td>${fromCents(l.cents)}</td>
+              </tr>`).join("")}
+          </tbody>
+        </table>
+
+        <dl class="totals">
+          <dt>Base imposable</dt><dd>${fromCents(base)}</dd>
+          <dt>IGI ${percent.format(f.igi)}</dt><dd>${fromCents(igi)}</dd>
+          <dt class="grand">Total</dt><dd class="grand">${fromCents(base + igi)}</dd>
+        </dl>
+
+        <div class="end">
+          <p class="notes">${escape(f.notes)}</p>
+          <footer class="foot">
+            <span>${escape(f.emissor.nom)} · NRT ${escape(f.emissor.nrt)} · ${escape(f.emissor.correu)}</span>
+            <span>${escape(f.emissor.web)} · Andorra</span>
+          </footer>
+        </div>`;
+    }
+
+    document.getElementById("factura").innerHTML = render(FACTURA);
+  </script>
+</body>
+</html>

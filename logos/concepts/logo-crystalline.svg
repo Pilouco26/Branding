@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Crystalline ridge mark">
+  <defs>
+    <linearGradient id="cr-top" x1="16" y1="3" x2="16" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D3EEE2"/>
+      <stop offset="100%" stop-color="#74BC9F"/>
+    </linearGradient>
+    <linearGradient id="cr-right" x1="16" y1="3" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3E8E74"/>
+      <stop offset="100%" stop-color="#0F2B24"/>
+    </linearGradient>
+    <linearGradient id="cr-left" x1="4" y1="26" x2="16" y2="10" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#12302A"/>
+      <stop offset="100%" stop-color="#4E9F83"/>
+    </linearGradient>
+  </defs>
+  <!-- Prism body: three 3D faces -->
+  <path fill="url(#cr-left)" d="M4 26 L16 3 L16 26 Z"/>
+  <path fill="url(#cr-right)" d="M16 3 L28 26 L16 26 Z"/>
+  <path fill="url(#cr-top)" d="M10 16 L16 3 L22 16 Z"/>
+  <!-- Edge gleam -->
+  <path fill="none" stroke="#EDF4F1" stroke-width="0.7" stroke-linecap="round" opacity="0.55" d="M16 3 L16 26"/>
+</svg>

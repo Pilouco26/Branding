@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Piricodi · Propostes de color i estil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+  <style>
+    :root {
+      --font-display: "Sora", system-ui, sans-serif;
+      --font-body: "IBM Plex Sans", system-ui, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+      --radius-control: 4px;
+      --radius-card: 8px;
+      --chamfer: 20px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-body); background: #F2F3F2; color: #1E2422; -webkit-font-smoothing: antialiased; }
+
+    .topbar { position: sticky; top: 0; z-index: 10; display: flex; gap: 24px; align-items: center; padding: 14px 40px; background: rgba(242, 243, 242, .92); backdrop-filter: blur(8px); border-bottom: 1px solid #DCE0DE; }
+    .topbar strong { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; margin-right: auto; }
+    .topbar a { color: #3A4542; text-decoration: none; font-size: 14px; }
+    .topbar a:hover { color: #000; }
+
+    main { max-width: 1240px; margin: 0 auto; padding: 48px 40px 96px; }
+    .intro { max-width: 760px; margin-bottom: 64px; }
+    .intro h1 { font-family: var(--font-display); font-weight: 600; font-size: 36px; letter-spacing: -0.03em; margin: 0 0 12px; }
+    .intro p { color: #4A5452; line-height: 1.6; margin: 0 0 8px; }
+
+    .palette { margin-bottom: 112px; color: var(--ink); }
+    .palette-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 24px; }
+    .palette-head h2 { font-family: var(--font-display); font-size: 32px; font-weight: 600; letter-spacing: -0.03em; margin: 6px 0 8px; }
+    .palette-head p { margin: 0; max-width: 680px; line-height: 1.6; color: var(--muted); }
+    .badge { font-family: var(--font-mono); font-size: 12px; padding: 6px 10px; border-radius: 999px; background: var(--primary); color: #fff; white-space: nowrap; }
+    .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+
+    .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 40px; }
+    .swatch { background: #fff; border: 1px solid #E1E4E2; border-radius: var(--radius-card); overflow: hidden; }
+    .swatch-chip { height: 72px; border-bottom: 1px solid rgba(0, 0, 0, .05); }
+    .swatch-body { padding: 10px 12px 12px; font-size: 12px; line-height: 1.45; color: #2E3735; }
+    .swatch-body b { display: block; font-family: var(--font-mono); font-weight: 500; }
+    .swatch-body code { font-family: var(--font-mono); color: #4A5452; }
+    .swatch-body span { display: block; color: #5A6361; margin-top: 4px; }
+    .swatch-body em { display: inline-block; margin-top: 8px; font-style: normal; font-family: var(--font-mono); font-size: 11px; padding: 2px 6px; border-radius: 3px; background: #F1F3F2; }
+
+    .mocks { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+    .mock { min-width: 0; }
+    .mock-wide { grid-column: 1 / -1; }
+    .mock-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #6A7371; margin: 0 0 10px; }
+    .stack { display: grid; gap: 28px; }
+
+    /* Depth: light from top-left, soft ink-tinted shadow, chamfered corner echoing the peak */
+    .frame { filter: drop-shadow(0 1px 1px color-mix(in srgb, var(--ink) 10%, transparent)) drop-shadow(0 14px 28px color-mix(in srgb, var(--ink) 10%, transparent)); }
+    .chamfer { clip-path: polygon(0 0, calc(100% - var(--chamfer)) 0, 100% var(--chamfer), 100% 100%, 0 100%); }
+
+    .lockup { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.04em; color: var(--ink); }
+    .lockup img { width: 30px; height: 30px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; font: 500 14px/1 var(--font-body); padding: 12px 18px; border-radius: var(--radius-control); text-decoration: none; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
+    .btn-primary { color: #fff; background: linear-gradient(180deg, var(--primary), var(--primary-deep)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 1px 2px color-mix(in srgb, var(--ink) 22%, transparent); }
+    .btn-primary:hover { background: var(--primary-deep); }
+    .btn-ghost { color: var(--ink); background: transparent; border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--muted); }
+    .btn-sm { padding: 8px 12px; font-size: 13px; }
+    .link { color: var(--link); font-weight: 500; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+    /* Web */
+    .web { position: relative; background: var(--surface); overflow: hidden; }
+    .web-nav { display: flex; align-items: center; gap: 32px; padding: 20px 36px; border-bottom: 1px solid var(--line); }
+    .web-nav nav { display: flex; gap: 24px; margin-left: auto; font-size: 14px; color: var(--muted); }
+    .web-hero { position: relative; display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; padding: 64px 36px 56px; }
+    .web-hero h3 { font-family: var(--font-display); font-weight: 600; font-size: 44px; line-height: 1.08; letter-spacing: -0.035em; margin: 14px 0 18px; max-width: 14ch; }
+    .web-hero .lead { font-size: 18px; line-height: 1.55; color: var(--muted); margin: 0 0 28px; max-width: 46ch; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .facets { justify-self: end; align-self: end; width: 100%; max-width: 340px; color: var(--primary); }
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 0 36px 40px; }
+    .pillar { background: color-mix(in srgb, #fff 55%, var(--tint)); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 20px; }
+    .pillar b { font-family: var(--font-mono); font-weight: 500; font-size: 12px; color: var(--link); }
+    .pillar h4 { font-family: var(--font-display); font-weight: 600; font-size: 17px; letter-spacing: -0.02em; margin: 8px 0 6px; }
+    .pillar p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+
+    /* Invoice */
+    .invoice { background: #fff; padding: 36px 36px 28px; font-size: 13px; color: var(--ink); }
+    .invoice header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .inv-meta { text-align: right; display: grid; gap: 4px; font-variant-numeric: tabular-nums; }
+    .inv-meta b { font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: -0.02em; }
+    .inv-meta span:last-child { color: var(--muted); }
+    .ridge-rule { display: flex; align-items: flex-end; margin: 24px 0; }
+    .ridge-rule::before, .ridge-rule::after { content: ""; border-bottom: 1px solid var(--line); }
+    .ridge-rule::before { flex: 0 0 40px; }
+    .ridge-rule::after { flex: 1; }
+    .ridge-rule svg { width: 36px; height: 12px; fill: none; stroke: var(--primary); stroke-width: 1; overflow: visible; }
+    .inv-parties { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
+    .inv-parties p { margin: 6px 0 0; line-height: 1.55; }
+    .invoice table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+    .invoice th { text-align: left; font-family: var(--font-mono); font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 0 0 10px; border-bottom: 1px solid var(--line); }
+    .invoice td { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .invoice th:not(:first-child), .invoice td:not(:first-child) { text-align: right; }
+    .totals { margin: 18px 0 0 auto; width: 62%; display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; font-variant-numeric: tabular-nums; }
+    .totals span:nth-child(odd) { color: var(--muted); }
+    .totals span.total { font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: -0.02em; color: var(--ink); padding-top: 10px; border-top: 1px solid var(--ink); }
+    .inv-foot { margin-top: 36px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
+
+    /* Slide */
+    .slide { aspect-ratio: 16 / 9; background: var(--night); color: var(--night-text); padding: 6% 7%; display: flex; flex-direction: column; }
+    .slide header { display: flex; justify-content: space-between; align-items: center; }
+    .slide .lockup { color: var(--night-text); font-size: 15px; }
+    .slide .lockup img { width: 22px; height: 22px; }
+    .slide .mono { font-family: var(--font-mono); font-size: 11px; opacity: .7; }
+    .slide-body { flex: 1; display: grid; grid-template-columns: 1.15fr 1fr; gap: 6%; align-items: end; }
+    .slide .eyebrow { color: var(--night-accent); }
+    .slide h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, 2.2vw, 26px); line-height: 1.12; letter-spacing: -0.03em; margin: 8px 0 14px; }
+    .slide ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; font-size: 12px; }
+    .slide li b { font-family: var(--font-mono); font-weight: 500; color: var(--night-accent); margin-right: 8px; }
+    .chart { margin: 0; }
+    .bars { display: flex; align-items: flex-end; gap: 10%; height: 92px; border-bottom: 1px solid color-mix(in srgb, var(--night-text) 25%, transparent); }
+    .bars i { flex: 1; background: color-mix(in srgb, var(--night-text) 22%, transparent); border-radius: 2px 2px 0 0; }
+    .bars i.accent { background: var(--night-accent); }
+    .chart-labels { display: flex; gap: 10%; font-family: var(--font-mono); font-size: 10px; margin-top: 6px; opacity: .75; }
+    .chart-labels span { flex: 1; text-align: center; }
+    .chart figcaption { font-family: var(--font-mono); font-size: 10px; opacity: .6; margin-top: 8px; }
+
+    /* Components */
+    .kit { background: var(--surface); padding: 24px; display: grid; gap: 18px; border: 1px solid var(--line); border-radius: var(--radius-card); }
+    .kit-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .field { display: grid; gap: 6px; font-size: 13px; font-weight: 500; }
+    .field input { font: 400 14px var(--font-body); color: var(--ink); padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--radius-control); background: #fff; outline: none; }
+    .field input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent); }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chips span { font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: var(--radius-control); background: var(--tint); color: var(--ink); border: 1px solid var(--line); }
+    .code { margin: 0; padding: 14px 16px; border-radius: var(--radius-control); background: var(--night); color: var(--night-text); font: 400 12px/1.6 var(--font-mono); overflow-x: auto; }
+    .code .c { color: color-mix(in srgb, var(--night-text) 55%, transparent); }
+    .code .k { color: var(--night-accent); }
+    .type-spec { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding-top: 6px; border-top: 1px solid var(--line); }
+    .type-spec div { display: grid; gap: 2px; }
+    .type-spec strong { font-size: 26px; color: var(--ink); }
+    .type-spec small { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+    .t-display { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.03em; }
+    .t-body { font-family: var(--font-body); font-weight: 500; }
+    .t-mono { font-family: var(--font-mono); font-weight: 500; }
+
+    @media (max-width: 960px) {
+      main { padding: 32px 20px 64px; }
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .mocks, .web-hero, .slide-body { grid-template-columns: 1fr; }
+      .pillars { grid-template-columns: 1fr; }
+      .web-nav nav { display: none; }
+      .facets { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <strong>Piricodi · color i estil</strong>
+    <a href="#estany">A · Estany</a>
+    <a href="#pissarra">B · Pissarra</a>
+    <a href="#prat">C · Prat i granit</a>
+    <a href="preview.html">Mark a mides →</a>
+  </div>
+
+  <main>
+    <section class="intro">
+      <h1>Tres direccions de color, un sol estil</h1>
+      <p>Totes parteixen d'un emerald suau i del mark de cresta. Canvia el segon eix: boira alpina (A), pissarra i granit (B) o prat i llum de tarda (C).</p>
+      <p>L'estil és comú a totes: Sora per a la marca, IBM Plex Sans per al text, IBM Plex Mono com a detall tècnic; llum des de dalt a l'esquerra, cantonada xamfranada com el cim i una regla de cresta com a separador.</p>
+      <p>Cada mostra indica el contrast WCAG amb la parella més útil, calculat en directe.</p>
+    </section>
+    <div id="root"></div>
+  </main>
+
+  <script>
+    const PALETTES = [
+      {
+        id: "estany",
+        letter: "A",
+        name: "Estany",
+        recommended: true,
+        concept: "Emerald fresc i boira d'estany d'alta muntanya. Fred, net i precís: la més moderna i la més «sharp tech» sense perdre suavitat.",
+        marks: { color: "svg/ridge-estany.svg", dark: "svg/ridge-estany-dark.svg", flat: "svg/ridge-estany-flat.svg" },
+        ui: {
+          ink: "#12302A", primary: "#2B7A62", primaryDeep: "#1D5646", lit: "#8FCBB2", tint: "#EDF4F1",
+          surface: "#FAFCFB", muted: "#5B6B66", line: "#D5E2DC", link: "#2B7A62",
+          night: "#0E1F1B", nightText: "#EDF4F1", nightAccent: "#8FCBB2"
+        },
+        tokens: [
+          { name: "ink", hex: "#12302A", role: "Text principal i títols" },
+          { name: "emerald", hex: "#2B7A62", role: "Primari: botons, enllaços, mark" },
+          { name: "emerald-deep", hex: "#1D5646", role: "Hover i cara d'ombra" },
+          { name: "mint", hex: "#8FCBB2", role: "Cara il·luminada; accent sobre fosc" },
+          { name: "mist", hex: "#EDF4F1", role: "Panells i seccions alternes" },
+          { name: "snow", hex: "#FAFCFB", role: "Superfície base" },
+          { name: "slate", hex: "#5B6B66", role: "Text secundari i metadades" },
+          { name: "line", hex: "#D5E2DC", role: "Línies fines i vores" },
+          { name: "night", hex: "#0E1F1B", role: "Fons fosc de decks" }
+        ]
+      },
+      {
+        id: "pissarra",
+        letter: "B",
+        name: "Pissarra",
+        concept: "Teulades de pissarra i murs de granit andorrans, amb l'emerald com a única llum. Luxe discret: la més sòbria i la millor per a factures.",
+        marks: { color: "svg/ridge-pissarra.svg", dark: "svg/ridge-pissarra-dark.svg", flat: "svg/ridge-pissarra-flat.svg" },
+        ui: {
+          ink: "#1E2422", primary: "#2F6B58", primaryDeep: "#234F42", lit: "#A7C4B6", tint: "#ECEAE3",
+          surface: "#F5F4F0", muted: "#636A66", line: "#DEDCD5", link: "#2F6B58",
+          night: "#171B1A", nightText: "#F5F4F0", nightAccent: "#A7C4B6"
+        },
+        tokens: [
+          { name: "ink", hex: "#1E2422", role: "Text principal (grafit)" },
+          { name: "slate", hex: "#3A4542", role: "Títols alternatius; cares del mark" },
+          { name: "emerald", hex: "#2F6B58", role: "Únic accent: CTA, enllaços, cara de llum" },
+          { name: "emerald-deep", hex: "#234F42", role: "Hover" },
+          { name: "sage", hex: "#A7C4B6", role: "Accent sobre fosc" },
+          { name: "tint", hex: "#ECEAE3", role: "Panells" },
+          { name: "paper", hex: "#F5F4F0", role: "Superfície base (paper càlid)" },
+          { name: "granite", hex: "#636A66", role: "Text secundari" },
+          { name: "line", hex: "#DEDCD5", role: "Línies fines" },
+          { name: "night", hex: "#171B1A", role: "Fons fosc de decks" }
+        ]
+      },
+      {
+        id: "prat",
+        letter: "C",
+        name: "Prat i granit",
+        concept: "Prat alpí, salvia i el cim tocat pel sol de tarda. La més càlida i propera; el daurat és un sol punt de llum per peça.",
+        marks: { color: "svg/ridge-prat.svg", dark: "svg/ridge-prat-dark.svg", flat: "svg/ridge-prat-flat.svg" },
+        ui: {
+          ink: "#1F332B", primary: "#3F826A", primaryDeep: "#2A5E4C", lit: "#B5D3C2", tint: "#EFE8DA",
+          surface: "#F7F3EA", muted: "#5F635C", line: "#E2DACB", link: "#2A5E4C",
+          night: "#15211C", nightText: "#F7F3EA", nightAccent: "#B5D3C2"
+        },
+        tokens: [
+          { name: "ink", hex: "#1F332B", role: "Text principal" },
+          { name: "emerald", hex: "#3F826A", role: "Fills, mark i botons (no text petit)" },
+          { name: "emerald-deep", hex: "#2A5E4C", role: "Text verd, enllaços, hover" },
+          { name: "sage", hex: "#B5D3C2", role: "Cara il·luminada" },
+          { name: "sand", hex: "#EFE8DA", role: "Panells" },
+          { name: "cream", hex: "#F7F3EA", role: "Superfície base" },
+          { name: "stone", hex: "#5F635C", role: "Text secundari" },
+          { name: "brass", hex: "#C9A45C", role: "Punt de llum: un detall per peça" },
+          { name: "line", hex: "#E2DACB", role: "Línies fines" },
+          { name: "night", hex: "#15211C", role: "Fons fosc de decks" }
+        ]
+      }
+    ];
+
+    function luminance(hex) {
+      const channels = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255)
+        .map(v => (v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)));
+      return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+    }
+
+    function contrast(a, b) {
+      const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+      return (hi + 0.05) / (lo + 0.05);
+    }
+
+    function grade(ratio) {
+      if (ratio >= 7) return "AAA";
+      if (ratio >= 4.5) return "AA";
+      if (ratio >= 3) return "AA gran";
+      return "decoratiu";
+    }
+
+    function swatches(p) {
+      const surface = p.tokens.find(t => t.hex === p.ui.surface);
+      const ink = p.tokens.find(t => t.hex === p.ui.ink);
+      return p.tokens.map(t => {
+        const onSurface = contrast(t.hex, surface.hex);
+        const withInk = contrast(t.hex, ink.hex);
+        const [ratio, ref] = onSurface >= withInk ? [onSurface, `sobre ${surface.name}`] : [withInk, `amb ${ink.name}`];
+        return `
+          <div class="swatch">
+            <div class="swatch-chip" style="background:${t.hex}"></div>
+            <div class="swatch-body">
+              <b>${t.name}</b><code>${t.hex}</code>
+              <span>${t.role}</span>
+              <em>${ref} ${ratio.toFixed(1)}:1 · ${grade(ratio)}</em>
+            </div>
+          </div>`;
+      }).join("");
+    }
+
+    const FACETS = `
+      <svg class="facets" viewBox="0 0 32 32" aria-hidden="true">
+        <path fill="currentColor" opacity=".10" d="M3 27 L11 9 L16 19 V27 Z"/>
+        <path fill="currentColor" opacity=".18" d="M16 19 L21 7 L29 27 H16 Z"/>
+        <path fill="currentColor" opacity=".05" d="M11 9 L21 7 L16 19 Z"/>
+      </svg>`;
+
+    const RIDGE_RULE = `
+      <div class="ridge-rule" aria-hidden="true">
+        <svg viewBox="0 0 36 12"><path d="M0 11.5 L10 3 L17 8 L25 1 L36 11.5"/></svg>
+      </div>`;
+
+    function web(p) {
+      return `
+        <div class="mock mock-wide">
+          <p class="mock-label">Web · hero</p>
+          <div class="frame"><section class="web chamfer">
+            <header class="web-nav">
+              <span class="lockup"><img src="${p.marks.color}" alt="">Piricodi</span>
+              <nav><span>Serveis</span><span>Projectes</span><span>Com treballem</span><span>Contacte</span></nav>
+              <span class="btn btn-sm btn-primary">Parlem</span>
+            </header>
+            <div class="web-hero">
+              <div>
+                <p class="eyebrow">Fàbrica de software · Andorra</p>
+                <h3>Enginyeria de software feta amb rigor als Pirineus.</h3>
+                <p class="lead">Partner tècnic fiable per a empreses locals. Dissenyem, construïm i mantenim sistemes que aguanten.</p>
+                <div class="actions">
+                  <span class="btn btn-primary">Comencem un projecte</span>
+                  <span class="btn btn-ghost">Com treballem</span>
+                </div>
+              </div>
+              ${FACETS}
+            </div>
+            <div class="pillars">
+              <div class="pillar"><b>01</b><h4>Rigor</h4><p>Arquitectura clara, codi revisat i proves abans d'entregar.</p></div>
+              <div class="pillar"><b>02</b><h4>Fiabilitat</h4><p>Terminis previsibles i suport quan el necessites.</p></div>
+              <div class="pillar"><b>03</b><h4>Artesania</h4><p>Detall en cada peça, de la base de dades a la interfície.</p></div>
+            </div>
+          </section></div>
+        </div>`;
+    }
+
+    function invoice(p) {
+      return `
+        <div class="mock">
+          <p class="mock-label">Factura · capçalera i línies</p>
+          <div class="frame"><section class="invoice">
+            <header>
+              <span class="lockup"><img src="${p.marks.flat}" alt="">Piricodi</span>
+              <div class="inv-meta"><p class="eyebrow">Factura</p><b>2026-0142</b><span>19/10/2026</span></div>
+            </header>
+            ${RIDGE_RULE}
+            <div class="inv-parties">
+              <div><p class="eyebrow">Emissor</p><p>Piricodi SL<br>NRT L-000000-X<br>Andorra la Vella</p></div>
+              <div><p class="eyebrow">Client</p><p>Empresa Local SA<br>NRT A-000000-X<br>Escaldes-Engordany</p></div>
+            </div>
+            <table>
+              <thead><tr><th>Concepte</th><th>Hores</th><th>Import</th></tr></thead>
+              <tbody>
+                <tr><td>Arquitectura i disseny tècnic</td><td>24</td><td>1.680,00 €</td></tr>
+                <tr><td>Desenvolupament backend</td><td>62</td><td>4.340,00 €</td></tr>
+                <tr><td>Manteniment i suport (octubre)</td><td>10</td><td>700,00 €</td></tr>
+              </tbody>
+            </table>
+            <div class="totals">
+              <span>Base imposable</span><span>6.720,00 €</span>
+              <span>IGI 4,5 %</span><span>302,40 €</span>
+              <span class="total">Total</span><span class="total">7.022,40 €</span>
+            </div>
+            <div class="inv-foot"><span>piricodi.ad · Andorra</span><span>Pàgina 1 de 1</span></div>
+          </section></div>
+        </div>`;
+    }
+
+    function slide(p) {
+      return `
+        <div class="mock">
+          <p class="mock-label">Pitch deck · diapositiva fosca</p>
+          <div class="frame"><section class="slide chamfer">
+            <header>
+              <span class="lockup"><img src="${p.marks.dark}" alt="">Piricodi</span>
+              <span class="mono">02 / 12</span>
+            </header>
+            <div class="slide-body">
+              <div>
+                <p class="eyebrow">Qui som</p>
+                <h3>Partner d'enginyeria per a empreses locals</h3>
+                <ul>
+                  <li><b>01</b>Sistemes a mida que aguanten</li>
+                  <li><b>02</b>Equip propi a Andorra</li>
+                  <li><b>03</b>Manteniment a llarg termini</li>
+                </ul>
+              </div>
+              <figure class="chart">
+                <div class="bars"><i style="height:42%"></i><i style="height:55%"></i><i style="height:63%"></i><i class="accent" style="height:88%"></i></div>
+                <div class="chart-labels"><span>T1</span><span>T2</span><span>T3</span><span>T4</span></div>
+                <figcaption>Exemple · accent + neutres</figcaption>
+              </figure>
+            </div>
+          </section></div>
+        </div>`;
+    }
+
+    function kit(p) {
+      return `
+        <div class="mock">
+          <p class="mock-label">Components i tipografia</p>
+          <section class="kit">
+            <div class="kit-row">
+              <span class="btn btn-primary">Enviar proposta</span>
+              <span class="btn btn-ghost">Cancel·lar</span>
+              <a class="link" href="#${p.id}">Veure detalls →</a>
+            </div>
+            <label class="field"><span>Correu electrònic</span><input value="hola@empresa.ad"></label>
+            <div class="chips"><span>Backend</span><span>Integracions</span><span>Manteniment</span></div>
+            <pre class="code"><span class="c">// desplegament verificat</span>
+<span class="k">await</span> deploy({ entorn: "producció" })</pre>
+            <div class="type-spec">
+              <div><strong class="t-display">Àa</strong><small>Sora 600 · marca</small></div>
+              <div><strong class="t-body">Çl·l</strong><small>Plex Sans · text</small></div>
+              <div><strong class="t-mono">0142</strong><small>Plex Mono · detall</small></div>
+            </div>
+          </section>
+        </div>`;
+    }
+
+    function cssVars(ui) {
+      return Object.entries(ui)
+        .map(([key, value]) => `--${key.replace(/[A-Z]/g, c => "-" + c.toLowerCase())}:${value}`)
+        .join(";");
+    }
+
+    const only = new URLSearchParams(location.search).get("p");
+    const shown = only ? PALETTES.filter(p => p.id === only) : PALETTES;
+
+    document.getElementById("root").innerHTML = shown.map(p => `
+      <section class="palette" id="${p.id}" style="${cssVars(p.ui)}">
+        <div class="palette-head">
+          <div>
+            <p class="eyebrow">Direcció ${p.letter}</p>
+            <h2>${p.name}</h2>
+            <p>${p.concept}</p>
+          </div>
+          ${p.recommended ? '<span class="badge">Recomanada</span>' : ""}
+        </div>
+        <div class="swatches">${swatches(p)}</div>
+        <div class="mocks">
+          ${web(p)}
+          ${invoice(p)}
+          <div class="stack">${slide(p)}${kit(p)}</div>
+        </div>
+      </section>`).join("");
+  </script>
+</body>
+</html>
